@@ -307,6 +307,9 @@ typedef struct PaWasapiStreamInfo
     PaWasapiStreamCategory streamCategory;
     PaWasapiStreamOption streamOption;
 } PaWasapiStreamInfo;
+
+/* pa_linux_alsa.h */
+void PaAlsa_EnableRealtimeScheduling (PaStream *s, int enable);
 """)
 
 ffibuilder.cdef("""

@@ -1099,7 +1099,7 @@ class _StreamBase(object):
         self.stop()
         self.close()
 
-    def start(self):
+    def start(self, enable_realtime=False):
         """Commence audio processing.
 
         See Also
@@ -1107,6 +1107,8 @@ class _StreamBase(object):
         stop, abort
 
         """
+        # TODO: Needs to check host api first
+        _lib.PaAlsa_EnableRealtimeScheduling(self._ptr, enable_realtime)
         err = _lib.Pa_StartStream(self._ptr)
         if err != _lib.paStreamIsNotStopped:
             _check(err, 'Error starting stream')
